@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	<url>
+		<loc>https://www.nlopez007.github.io/github pages/nlopez007.github.io</loc>
+		<priority>0.60</priority>
+		<lastmod>2022-02-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.nlopez007.github.io/fooview/Piano.html</loc>
+		<priority>0.60</priority>
+		<lastmod>2022-02-16</lastmod>
+	</url>
+	<url>
+		<loc>https://www.nlopez007.github.io/fooview/language detector.html</loc>
+		<priority>0.60</priority>
+		<lastmod>2022-02-16</lastmod>
+	</url>
+	<url>
+		<loc>https://www.nlopez007.github.io/fooview/HTML Template.html</loc>
+		<priority>0.60</priority>
+		<lastmod>2022-02-16</lastmod>
+	</url>
+	<url>
+		<loc>https://www.nlopez007.github.io/github pages/nlopez007.github.io/fooview/piano.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2022-02-18</lastmod>
+	</url>
+	<url>
+		<loc>https://www.nlopez007.github.io/CS50 Web/Lecture 1/hello/hello.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2022-02-17</lastmod>
+	</url>
+</urlset>
