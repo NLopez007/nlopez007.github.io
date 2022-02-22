@@ -3,17 +3,17 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-  body{background: yellow;}
+  body{background: red;}
   </style>
 </head>
 
 <body>
   <h1>My First DIY Remote</h1>
   <p>This works for Magic Lightning LED</p>
-  <button onclick="transmit(7..toString(16))">
+  <button onclick="transmit('FFE01F')">
  Power On
 </button>
-  <button onclick="transmit(6..toString(16))">
+  <button onclick="transmit('FF609F')">
  Power Off
 </button>
 </body>
