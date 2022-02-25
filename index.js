@@ -5,10 +5,10 @@ xmlhttp.send();
 var xmlDoc = xmlhttp.responseXML;
 
 var posts = [];
-xmlDoc.querySelectorAll("url").forEach(function (url) {
-  var url = url.querySelector("loc").textContent;
-  let lastmod = url.querySelector("lastmod").textContent;
-  var post = {
+xmlDoc.querySelectorAll("url").forEach(function (el) {
+  let url = el.querySelector("loc").textContent;
+  let lastmod = el.querySelector("lastmod").textContent;
+  let post = {
     url: url,
     lastMod: lastmod
   };
