@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
-		<loc>https://www.nlopez007.github.io</loc>
+		<loc>https://www.nlopez007.github.io/remote/remote-beta.html</loc>
+		<priority>0.33</priority>
+		<lastmod>2022-03-15</lastmod>
+	</url>
+	<url>
+		<loc>https://www.nlopez007.github.io/remote/remote.html</loc>
+		<priority>0.33</priority>
 		<lastmod>2022-03-16</lastmod>
 	</url>
 	<url>
+		<loc>https://www.nlopez007.github.io</loc>
+		<lastmod>2022-03-12</lastmod>
+	</url>
+	<url>
 		<loc>https://www.nlopez007.github.io/fooview/piano.html</loc>
-		<lastmod>2022-02-02</lastmod>
+		<lastmod>2022-01-29</lastmod>
 	</url>
 </urlset>
