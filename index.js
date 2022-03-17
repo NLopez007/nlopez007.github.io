@@ -1,6 +1,6 @@
 //get xml sitemap
 var xmlhttp = new XMLHttpRequest();
-xmlhttp.open("GET", "https://nlopez007.github.io/sitemap.xml", false);
+xmlhttp.open("GET", "sitemap.xml", false);
 xmlhttp.send();
 var xmlDoc = xmlhttp.responseXML;
 
@@ -15,10 +15,15 @@ xmlDoc.querySelectorAll("url").forEach(function (el) {
   posts.push(post);
 });
 
-//create posts from html template
-var postsHTML = "";
+var temp = document.getElementsByTagName("template")[0];
+var item = temp.content.querySelector("a");
+console.log(item);
 posts.forEach(function (post) {
-  var template = document.querySelector("#post-template").innerHTML;
-  var html = template.replace("{{url}}", post.url);
-  postsHTML += html;
+  let url = new URL(post.url);
+  let path = url.pathname;
+  if(path=="/")return;
+  var a = document.importNode(item, true);
+  a.href = path;
+  a.innerText = path;
+  document.body.appendChild(a);
 });
