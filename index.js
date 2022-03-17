@@ -17,7 +17,6 @@ xmlDoc.querySelectorAll("url").forEach(function (el) {
 
 var temp = document.getElementsByTagName("template")[0];
 var item = temp.content.querySelector("a");
-console.log(item);
 posts.forEach(function (post) {
   let url = new URL(post.url);
   let path = url.pathname;
