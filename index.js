@@ -4,7 +4,7 @@ xmlhttp.open("GET", "sitemap.xml", false);
 xmlhttp.send();
 var xmlDoc = xmlhttp.responseXML;
 
-var posts = [];
+var sitemapData = [];
 xmlDoc.querySelectorAll("url").forEach(function (el) {
   let url = el.querySelector("loc").textContent;
   let lastmod = el.querySelector("lastmod").textContent;
@@ -12,12 +12,12 @@ xmlDoc.querySelectorAll("url").forEach(function (el) {
     url: url,
     lastMod: lastmod
   };
-  posts.push(post);
+  sitemapData.push(post);
 });
 
 var temp = document.getElementsByTagName("template")[0];
 var item = temp.content.querySelector("a");
-posts.forEach(function (post) {
+sitemapData.forEach(function (post) {
   let url = new URL(post.url);
   let path = url.pathname;
   if(path=="/")return;
