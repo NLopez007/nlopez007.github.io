@@ -26,23 +26,25 @@
       function lngtype(text) {
         var text = document.getElementById("give_lang").value.replace(/\s/g,"");
         var langdic = {
-          "Arabic": /[\u0600-\u06FF]/,
-          "Persian": /[\u0750-\u077F]/,
-          "Hebrew": /[\u0590-\u05FF]/,
-          "Syriac": /[\u0700-\u074F]/,
-          "Bengali": /[\u0980-\u09FF]/,
-          "Ethiopic": /[\u1200-\u137F]/,
-          "Greek and Coptic": /[\u0370-\u03FF]/,
-          "Georgian": /[\u10A0-\u10FF]/,
-          "Thai": /[\u0E00-\u0E7F]/,
-          "Chinese": /[\u4E00-\u9FCC]/,
-          "Han": /\p{sc=Han}/u,
-          "Katakana": /\p{sc=Kana}/u,
-          "Hiragana": /\p{sc=Hira}/u,
-          "Japanese": /(\p{sc=Hira}|\p{sc=Kana})/u,
-          "Korean": /\p{sc=Hang}/u,
-          "English": /[a-zA-Z]/g
-        };
+      "Arabic": /[\u0600-\u06FF]/,
+      "Cyrillic" : /\p{sc=Cyrl}/u,
+      "Persian": /[\u0750-\u077F]/,
+      "Hebrew": /[\u0590-\u05FF]/,
+      "Syriac": /[\u0700-\u074F]/,
+      "Bengali": /[\u0980-\u09FF]/,
+      "Ethiopic": /[\u1200-\u137F]/,
+      "Greek and Coptic": /[\u0370-\u03FF]/,
+      "Georgian": /[\u10A0-\u10FF]/,
+      "Thai": /\p{sc=Thai}/u,
+      "Korean": /\p{sc=Hangul}/u,
+      "Chinese": /[\u4E00-\u9FCC]/,
+      "Han" : /\p{sc=Han}/u,
+      "Katakana": /\p{sc=Kana}/u,
+      "Hiragana": /\p{sc=Hira}/u,
+      "Japanese": /(\p{scx=Hira}|\p{scx=Kana})/u,
+      "Vietnamese" : /[àáãạảăắằẳẵặâấầẩẫậèéẹẻẽêềếểễệđìíĩỉịòóõọỏôốồổỗộơớờởỡợùúũụủưứừửữựỳỵỷỹýÀÁÃẠẢĂẮẰẲẴẶÂẤẦẨẪẬÈÉẸẺẼÊỀẾỂỄỆĐÌÍĨỈỊÒÓÕỌỎÔỐỒỔỖỘƠỚỜỞỠỢÙÚŨỤỦƯỨỪỬỮỰỲỴỶỸÝ]/,
+      "English": /[a-zA-Z]/g
+    };
         let detected = [];
         Object.entries(langdic).forEach(([key, value]) => {
           if (value.test(text) == true) {
