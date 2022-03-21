@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta application-name="Piano">
+<script>var Synth,AudioSynth,AudioSynthInstrument;!function(){var t=window.URL||window.webkitURL,n=window.Blob;if(!t||!n)throw new Error("This browser does not support AudioSynth");var e=!1,i=null,r=function(t,n){return[new Uint8Array([n,n>>8]),new Uint8Array([n,n>>8,n>>16,n>>24])][t]},a=function(t,n,e,i){Object.defineProperty(this,t,{value:n,writable:!!e,enumerable:!!i})},s=function(t,n,e){a.call(this,t,n,e,!0)},h=a.bind((AudioSynthInstrument=function(){this.__init__.apply(this,arguments)}).prototype),u=s.bind(AudioSynthInstrument.prototype);h("__init__",function(t,n,i){if(!e)throw new Error("AudioSynthInstrument can only be instantiated from the createInstrument method of the AudioSynth object.");a.call(this,"_parent",t),s.call(this,"name",n),a.call(this,"_soundID",i)}),u("play",function(t,n,e){return this._parent.play(this._soundID,t,n,e)}),u("generate",function(t,n,e){return this._parent.generate(this._soundID,t,n,e)}),h=a.bind((AudioSynth=function t(){return i instanceof t?i:(this.__init__(),this)}).prototype),u=s.bind(AudioSynth.prototype),h("_debug",!1,!0),h("_bitsPerSample",16),h("_channels",1),h("_sampleRate",44100,!0),u("setSampleRate",function(t){return this._sampleRate=Math.max(Math.min(0|t,44100),4e3),this._clearCache(),this._sampleRate}),u("getSampleRate",function(){return this._sampleRate}),h("_volume",32768,!0),u("setVolume",function(t){return t=parseFloat(t),isNaN(t)&&(t=0),t=Math.round(32768*t),this._volume=Math.max(Math.min(0|t,32768),0),this._clearCache(),this._volume}),u("getVolume",function(){return Math.round(this._volume/32768*1e4)/1e4}),h("_notes",{C:261.63,"C#":277.18,D:293.66,"D#":311.13,E:329.63,F:349.23,"F#":369.99,G:392,"G#":415.3,A:440,"A#":466.16,B:493.88}),h("_fileCache",[],!0),h("_temp",{},!0),h("_sounds",[],!0),h("_mod",[function(t,n,e,i){return Math.sin(2*Math.PI*(t/n)*e+i)}]),h("_resizeCache",function(){for(var t=this._fileCache,n=this._sounds.length;t.length<n;){for(var e=[],i=0;i<8;i++){var o={};for(var r in this._notes)o[r]={};e.push(o)}t.push(e)}}),h("_clearCache",function(){this._fileCache=[],this._resizeCache()}),u("generate",function(e,i,o,a){var s=this._sounds[e];if(!s)for(var h=0;h<this._sounds.length;h++)if(this._sounds[h].name==e){s=this._sounds[h],e=h;break}if(!s)throw new Error("Invalid sound or sound ID: "+e);var u=(new Date).valueOf();this._temp={},o|=0,o=Math.min(8,Math.max(1,o));var l=a?parseFloat(a):2;if(void 0===this._notes[i])throw new Error(i+" is not a valid note.");if(void 0!==this._fileCache[e][o-1][i][l])return this._debug&&console.log((new Date).valueOf()-u,"ms to retrieve (cached)"),this._fileCache[e][o-1][i][l];var f=this._notes[i]*Math.pow(2,o-4),c=this._sampleRate,d=this._volume,_=this._channels,m=this._bitsPerSample,p=s.attack(c,f,d),v=s.dampen(c,f,d),w=s.wave,M={modulate:this._mod,vars:this._temp},y=0,I=new Uint8Array(new ArrayBuffer(Math.ceil(c*l*2))),g=c*p|0,b=c*l|0;for(h=0;h!==g;h++)y=d*(h/(c*p))*w.call(M,h,c,f,d),I[h<<1]=y,I[1+(h<<1)]=y>>8;for(;h!==b;h++)y=d*Math.pow(1-(h-c*p)/(c*(l-p)),v)*w.call(M,h,c,f,d),I[h<<1]=y,I[1+(h<<1)]=y>>8;var S=["RIFF",r(1,52),"WAVE","fmt ",r(1,16),r(0,1),r(0,_),r(1,c),r(1,c*_*m/8),r(0,_*m/8),r(0,m),"data",r(1,I.length*_*m/8),I],A=new n(S,{type:"audio/wav"}),P=t.createObjectURL(A);return this._fileCache[e][o-1][i][l]=P,this._debug&&console.log((new Date).valueOf()-u,"ms to generate"),P}),u("play",function(t,n,e,i){var o=this.generate(t,n,e,i);return new Audio(o).play(),!0}),u("debug",function(){this._debug=!0}),u("createInstrument",function(t){var n=0,i=!1;if("string"==typeof t){for(var o=0;o<this._sounds.length;o++)if(this._sounds[o].name==t){i=!0,n=o;break}}else this._sounds[t]&&(n=t,t=this._sounds[n].name,i=!0);if(!i)throw new Error("Invalid sound or sound ID: "+t);e=!0;var r=new AudioSynthInstrument(this,t,n);return e=!1,r}),u("listSounds",function(){for(var t=[],n=0;n<this._sounds.length;n++)t.push(this._sounds[n].name);return t}),h("__init__",function(){this._resizeCache()}),u("loadSoundProfile",function(){for(var t=0,n=arguments.length;t<n;t++){if(o=arguments[t],!(o instanceof Object))throw new Error("Invalid sound profile.");this._sounds.push(o)}return this._resizeCache(),!0}),u("loadModulationFunction",function(){for(var t=0,n=arguments.length;t<n;t++){if(f=arguments[t],"function"!=typeof f)throw new Error("Invalid modulation function.");this._mod.push(f)}return!0}),i=new AudioSynth,Synth=i}(),Synth.loadModulationFunction(function(t,n,e,i){return 1*Math.sin(2*Math.PI*(t/n*e)+i)},function(t,n,e,i){return 1*Math.sin(4*Math.PI*(t/n*e)+i)},function(t,n,e,i){return 1*Math.sin(8*Math.PI*(t/n*e)+i)},function(t,n,e,i){return 1*Math.sin(.5*Math.PI*(t/n*e)+i)},function(t,n,e,i){return 1*Math.sin(.25*Math.PI*(t/n*e)+i)},function(t,n,e,i){return.5*Math.sin(2*Math.PI*(t/n*e)+i)},function(t,n,e,i){return.5*Math.sin(4*Math.PI*(t/n*e)+i)},function(t,n,e,i){return.5*Math.sin(8*Math.PI*(t/n*e)+i)},function(t,n,e,i){return.5*Math.sin(.5*Math.PI*(t/n*e)+i)},function(t,n,e,i){return.5*Math.sin(.25*Math.PI*(t/n*e)+i)}),Synth.loadSoundProfile({name:"piano",attack:function(){return.002},dampen:function(t,n,e){return Math.pow(.5*Math.log(n*e/t),2)},wave:function(t,n,e,i){var o=this.modulate[0];return this.modulate[1](t,n,e,Math.pow(o(t,n,e,0),2)+.75*o(t,n,e,.25)+.1*o(t,n,e,.5))}});var piano=Synth.createInstrument("piano");
+Synth.setSampleRate(8000);
+</script>
+<style>
+div {
+padding: none;
+}
+center {
+display: flex;
+flex-flow: row wrap;
+}
+button {
+touch-action: none;
+height: 100px;
+width: 45px;
+user-select: none;
+background: white;
+border: 1px solid black;
+border-bottom-width: 5px;
+}
+button:active {
+  animation: 1ms pressed;
+  border-bottom-width: 1px;
+}
+@keyframes pressed {
+  from {border-bottom-width: 5px;}
+  to {border-bottom-width: 1px;}
+}
+</style>
+</head>
+
+<body>
+  <h1 style="text-align: center">Piano Beta🎹</h1>
+  <center>
+  <button ontouchstart="p(this)">C3</button>
+  <button ontouchstart="p(this)">D3</button>
+  <button ontouchstart="p(this)">E3</button>
+  <button ontouchstart="p(this)">F3</button>
+  <button ontouchstart="p(this)">G3</button>
+  <button ontouchstart="p(this)">A3</button>
+  <button ontouchstart="p(this)">B3</button>
+  <button ontouchstart="p(this)">C4</button>
+  <button ontouchstart="p(this)">D4</button>
+  <button ontouchstart="p(this)">E4</button>
+  <button ontouchstart="p(this)">F4</button>
+  <button ontouchstart="p(this)">G4</button>
+  <button ontouchstart="p(this)">A4</button>
+  <button ontouchstart="p(this)">B4</button>
+  <button ontouchstart="p(this)">C5</button>
+  <button ontouchstart="p(this)">D5</button>
+  <button ontouchstart="p(this)">E5</button>
+  <button ontouchstart="p(this)">F5</button>
+  <button ontouchstart="p(this)">G5</button>
+  <button ontouchstart="p(this)">A5</button>
+  <button ontouchstart="p(this)">B5</button>
+  <button ontouchstart="p(this)">C6</button>
+  <button ontouchstart="p(this)">D6</button>
+  <button ontouchstart="p(this)">E6</button>
+  <button ontouchstart="p(this)">F6</button>
+  <button ontouchstart="p(this)">G6</button>
+  <button ontouchstart="p(this)">A6</button>
+  <button ontouchstart="p(this)">B6</button>
+  </center>
+  <p>This is still a work in progress</p>
+  <script>
+    function p(k) {
+      k = k.innerText.split("");
+      piano.play(k[0],k[1],2); 
+      navigator.vibrate(0);
+    }
+  </script>
+</body>
+</html>
