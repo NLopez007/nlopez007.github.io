@@ -1,6 +1,6 @@
 //get xml sitemap
 var xhr = new XMLHttpRequest();
-xhr.open("GET", "sitemap.xml", true);
+xhr.open("GET", "sitemap.xml", false);
 xhr.onload = function (e) {
   if (xhr.readyState === 4) {
     if (xhr.status === 200) {
