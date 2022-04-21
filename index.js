@@ -1,8 +1,20 @@
 //get xml sitemap
-var xmlhttp = new XMLHttpRequest();
-xmlhttp.open("GET", "sitemap.xml", false);
-xmlhttp.send();
-var xmlDoc = xmlhttp.responseXML;
+var xhr = new XMLHttpRequest();
+xhr.open("GET", "/bar/foo.txt", true);
+xhr.onload = function (e) {
+  if (xhr.readyState === 4) {
+    if (xhr.status === 200) {
+      console.log(xhr.responseText);
+    } else {
+      console.error(xhr.statusText);
+    }
+  }
+};
+xhr.onerror = function (e) {
+  console.error(xhr.statusText);
+};
+xhr.send(null);
+var xmlDoc = xhr.responseXML;
 
 var sitemapData = [];
 xmlDoc.querySelectorAll("url").forEach(function (el) {
