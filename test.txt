@@ -1,1 +1,2 @@
-this is a test to upload to github with termux
+I added this file from my phone with termux
+
