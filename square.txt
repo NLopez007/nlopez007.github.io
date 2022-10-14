@@ -1,0 +1,8 @@
+position: 'absolute',
+transform: 'scale(0)',
+opacity: '0',
+filter: 'opacity(0)',
+visibility: 'hidden',
+zIndex: '-99999',
+display: 'none',
+clipPath: 'circle(0)'
