@@ -240,6 +240,8 @@
         >Powered by Emmet</span
       >
     </div>
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <button>hello world</button>
     <script>
       function update(text) {
         let result_element = document.querySelector("#highlighting-content");
@@ -292,6 +294,17 @@
         pretty_break: false,
         use_tab: true,
       });
+
+      const selected = document.querySelector("button");
+
+      selected.addEventListener("click", checkboxClick, false);
+
+      function checkboxClick(event) {
+        let warn = "preventDefault() won't let you check this!<br>";
+        // document.getElementById("output-box").innerHTML += warn;
+        console.log(warn);
+        event.preventDefault();
+      }
     </script>
   </body>
 </html>
