@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emmet2</title>
+  </head>
+  <body>
+    <script src="./node_modules/codemirror/lib/codemirror.js"></script>
+    <script src="./node_modules/@emmetio/codemirror-plugin/dist/browser.js"></script>
+
+    <form>
+      <textarea id="code" name="code"></textarea>
+    </form>
+
+    <script>
+      var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+        mode: "text/html",
+        extraKeys: {
+          Tab: "emmetExpandAbbreviation",
+          Esc: "emmetResetAbbreviation",
+          Enter: "emmetInsertLineBreak",
+        },
+      });
+    </script>
+  </body>
+</html>
