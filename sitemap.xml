@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
-		<loc>https://nlopez007.github.io/share.html</loc>
-		<lastmod>2022-10-05</lastmod>
-	</url>
-	<url>
-		<loc>https://nlopez007.github.io/remote/remote.html</loc>
-		<lastmod>2022-03-08</lastmod>
-	</url>
-	<url>
-		<loc>https://nlopez007.github.io/remote/remote-beta.html</loc>
-		<lastmod>2022-10-05</lastmod>
-	</url>
-	<url>
-		<loc>https://nlopez007.github.io/ios_shortcuts/line-up-text.html</loc>
-		<lastmod>2022-10-18</lastmod>
-	</url>
-	<url>
-		<loc>https://nlopez007.github.io/ios_shortcuts/emmet.html</loc>
-		<lastmod>2022-10-07</lastmod>
-	</url>
-	<url>
-		<loc>https://nlopez007.github.io/ios_shortcuts/Emmet CodeMirror/node_modules/style-mod/test/test.html</loc>
-		<lastmod>1985-10-18</lastmod>
-	</url>
-	<url>
-		<loc>https://nlopez007.github.io/ios_shortcuts/Emmet CodeMirror/Emmet2.html</loc>
-		<lastmod>2022-10-27</lastmod>
-	</url>
-	<url>
-		<loc>https://nlopez007.github.io</loc>
-		<lastmod>2022-10-05</lastmod>
+		<loc>https://nlopez007.github.io/fooview/language-detector.html</loc>
+		<lastmod>2022-10-04</lastmod>
 	</url>
 	<url>
 		<loc>https://nlopez007.github.io/fooview/piano.html</loc>
-		<lastmod>2022-10-05</lastmod>
+		<lastmod>2022-10-04</lastmod>
 	</url>
 	<url>
-		<loc>https://nlopez007.github.io/fooview/language-detector.html</loc>
-		<lastmod>2022-10-05</lastmod>
+		<loc>https://nlopez007.github.io</loc>
+		<lastmod>2022-11-01</lastmod>
+	</url>
+	<url>
+		<loc>https://nlopez007.github.io/ios_shortcuts/Emmet CodeMirror/Emmet2.html</loc>
+		<lastmod>2022-10-26</lastmod>
+	</url>
+	<url>
+		<loc>https://nlopez007.github.io/ios_shortcuts/Emmet CodeMirror/node_modules/style-mod/test/test.html</loc>
+		<lastmod>1985-10-17</lastmod>
+	</url>
+	<url>
+		<loc>https://nlopez007.github.io/ios_shortcuts/emmet.html</loc>
+		<lastmod>2022-10-06</lastmod>
+	</url>
+	<url>
+		<loc>https://nlopez007.github.io/ios_shortcuts/line-up-text.html</loc>
+		<lastmod>2022-10-17</lastmod>
+	</url>
+	<url>
+		<loc>https://nlopez007.github.io/remote/remote-beta.html</loc>
+		<lastmod>2022-10-04</lastmod>
+	</url>
+	<url>
+		<loc>https://nlopez007.github.io/remote/remote.html</loc>
+		<lastmod>2022-03-07</lastmod>
+	</url>
+	<url>
+		<loc>https://nlopez007.github.io/share.html</loc>
+		<lastmod>2022-10-04</lastmod>
 	</url>
 </urlset>
