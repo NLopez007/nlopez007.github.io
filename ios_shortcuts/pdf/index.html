@@ -1,41 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>PDF Display Example</title>
-    <style>
-      #pdf-container {
-        width: 100%;
-        height: 100%;
-      }
-    </style>
-  </head>
-  <body>
-    <input type="file" id="pdf-file" />
-    <div id="pdf-container"></div>
-    <script>
-      const pdfFile = document.getElementById("pdf-file");
-      const pdfContainer = document.getElementById("pdf-container");
-
-      pdfFile.addEventListener("change", () => {
-        const file = pdfFile.files[0];
-        const fileReader = new FileReader();
-
-        fileReader.onload = () => {
-          const typedArray = new Uint8Array(fileReader.result);
-          const blob = new Blob([typedArray], { type: "application/pdf" });
-          const objectUrl = URL.createObjectURL(blob);
-
-          const iframe = document.createElement("iframe");
-          iframe.src = objectUrl;
-          iframe.style.width = "100%";
-          iframe.style.height = "100%";
-
-          pdfContainer.appendChild(iframe);
-        };
-
-        fileReader.readAsArrayBuffer(file);
-      });
-    </script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>PDF.js viewer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf_viewer.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.js"></script>
+</head>
+<body>
+  <div>
+    <canvas id="pdf-viewer"></canvas>
+  </div>
+  <script>
+    const pdfData = atob('[Base64]');
+    const pdfjsLib = window['pdfjs-dist/build/pdf'];
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.js';
+    const loadingTask = pdfjsLib.getDocument({ data: pdfData });
+    loadingTask.promise.then(pdf => {
+      const canvas = document.getElementById('pdf-viewer');
+      const context = canvas.getContext('2d');
+      const viewport = pdf.getPage(1).getViewport({ scale: 1 });
+      canvas.height = viewport.height;
+      canvas.width = viewport.width;
+      pdf.getPage(1).render({ canvasContext: context, viewport: viewport });
+    });
+  </script>
+</body>
 </html>
