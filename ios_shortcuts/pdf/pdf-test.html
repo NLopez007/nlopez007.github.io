@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>PDF.js Example</title>
+    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+  </head>
+  <body>
+    <input type="file" id="file-input" value="[base64 here]">
+    <div>
+      <canvas id="pdf-canvas"></canvas>
+    </div>
+    <script>
+      function renderPDF(file) {
+        var reader = new FileReader();
+        if (file) {
+          reader.readAsDataURL(file);
+        } else {
+          reader.readAsDataURL(document.getElementById('file-input').files[0]);
+        }
+        reader.onloadend = function() {
+          var base64data = reader.result;
+          PDFJS.getDocument({data: base64data}).then(function(pdf) {
+            pdf.getPage(1).then(function(page) {
+              var scale = 1.5;
+              var viewport = page.getViewport(scale);
+
+              var canvas = document.getElementById('pdf-canvas');
+              var context = canvas.getContext('2d');
+              canvas.height = viewport.height;
+              canvas.width = viewport.width;
+
+              var renderContext = {
+                canvasContext: context,
+                viewport: viewport
+              };
+              page.render(renderContext);
+            });
+          });
+        }
+      }
+
+      var fileInput = document.getElementById('file-input');
+      fileInput.addEventListener('change', function(e) {
+        var file = e.target.files[0];
+        renderPDF(file);
+      });
+    </script>
+  </body>
+</html>
